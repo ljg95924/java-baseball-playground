@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class StringCalculator {
 
-    public static int[] InputNumbers(String[] values) {
-        int numbers[] = new int[values.length / 2 + 1];
+    public static int[] InputNumbers(int length) {
+        int numbers[] = new int[length / 2 + 1];
 
         return numbers;
     }
@@ -30,10 +30,11 @@ public class StringCalculator {
 
 
         Scanner scanner = new Scanner(System.in);
+        System.out.println("계산할 숫자 입력");
         String value = scanner.nextLine();
         String[] values = value.split(" ");
 
-        int[] numbers = InputNumbers(values);
+        int[] numbers = InputNumbers(values.length);
 
         int j = 0;
 
@@ -49,7 +50,6 @@ public class StringCalculator {
             result =calculate(values[i], numbers[j],result);
             j++;
         }
-
         System.out.println("결과: "+result);
     }
 }
