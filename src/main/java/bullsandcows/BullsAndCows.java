@@ -52,6 +52,7 @@ public class BullsAndCows {
     }
 
     public void CheckResult(int[] Answer, int[] InputArray) {
+        ResultView RV = new ResultView();
         while (true) {
             int Ball = 0, Strike = 0;
             System.out.println("Answer:" + Answer[0] + "," + Answer[1] + "," + Answer[2]);
@@ -77,29 +78,11 @@ public class BullsAndCows {
             if (Answer[2] == InputArray[0] || Answer[2] == InputArray[1]) {
                 Ball += 1;
             }
-            OutputStrikeBall(Strike, Ball);
+            RV.OutputStrikeBall(Strike, Ball);
             InputArray = ReInput();
         }
     }
 
-    private void OutputStrikeBall(int strike, int ball) {
-        if (ball == 0 && strike == 0) {
-            System.out.println("낫싱");
-            return;
-        }
-        if (ball == 0) {
-            System.out.println(strike + "스트라이크");
-            return;
-        }
-        if (strike == 0) {
-            System.out.println(ball + "볼");
-            return;
-        }
-        if (ball == 1 || ball == 2) {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
-            return;
-        }
-    }
 
     public int[] ReInput() {
         Scanner scanner = new Scanner(System.in);
