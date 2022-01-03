@@ -3,17 +3,8 @@ package bullsandcows;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import static java.lang.System.exit;
-
 public class BullsAndCows {
-    public void InputVeiw() {
-        System.out.println("숫자야구 게임입니다. \n 숫자를 입력해주세요: ");
-    }
 
-    public void ResultView() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료 \n 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-    }
 
     public int[] CreateRamdomNumber(int[] Num) {
         for (int i = 0; i < 3; i++) {
@@ -94,27 +85,19 @@ public class BullsAndCows {
     private void OutputStrikeBall(int strike, int ball) {
         if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
+            return;
         }
-        if (ball == 0 && strike == 1) {
-            System.out.println("1스트라이크");
+        if (ball == 0) {
+            System.out.println(strike + "스트라이크");
+            return;
         }
-        if (ball == 0 && strike == 2) {
-            System.out.println("2스트라이크");
+        if (strike == 0) {
+            System.out.println(ball + "볼");
+            return;
         }
-        if (ball == 1 && strike == 0) {
-            System.out.println("1볼");
-        }
-        if (ball == 1 && strike == 1) {
-            System.out.println("1볼 1스트라이크");
-        }
-        if (ball == 1 && strike == 2) {
-            System.out.println("1볼 2스트라이크");
-        }
-        if (ball == 2 && strike == 0) {
-            System.out.println("2볼");
-        }
-        if (ball == 2 && strike == 1) {
-            System.out.println("2볼 1스트라이크");
+        if (ball == 1 || ball == 2) {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+            return;
         }
     }
 
@@ -135,10 +118,12 @@ public class BullsAndCows {
     public static void main(String[] args) {
         while (true) {
             BullsAndCows BAC = new BullsAndCows();
-            BAC.InputVeiw();
+            InputView IV = new InputView();
+            ResultView RV = new ResultView();
+            IV.InputVeiw();
 
             int[] Answer = new int[3];
-            int[] InputArray = new int[3];
+            int[] InputArray;
 
             Answer = BAC.CreateRamdomNumber(Answer);
             Answer = BAC.CheckDuplication(Answer);
@@ -150,7 +135,7 @@ public class BullsAndCows {
 
             BAC.CheckResult(Answer, InputArray);
 
-            BAC.ResultView();
+            RV.ResultView();
             int GameMode = scanner.nextInt();
             BAC.EndingGame(GameMode);
         }
