@@ -52,39 +52,56 @@ public class BullsAndCows {
     }
 
     public void CheckResult(int[] Answer, int[] InputArray) {
+        Boolean Flag = true;
+        Flag = AnswerCheck(Answer, InputArray);
         ResultView RV = new ResultView();
-        while (true) {
-            int Ball = 0, Strike = 0;
-            System.out.println("Answer:" + Answer[0] + "," + Answer[1] + "," + Answer[2]);
-            if (Arrays.equals(Answer, InputArray)) {
-                System.out.println("3스트라이크");
-                break;
-            }
-            if (Answer[0] == InputArray[0]) {
-                Strike += 1;
-            }
-            if (Answer[1] == InputArray[1]) {
-                Strike += 1;
-            }
-            if (Answer[2] == InputArray[2]) {
-                Strike += 1;
-            }
-            if (Answer[0] == InputArray[1] || Answer[0] == InputArray[2]) {
-                Ball += 1;
-            }
-            if (Answer[1] == InputArray[0] || Answer[1] == InputArray[2]) {
-                Ball += 1;
-            }
-            if (Answer[2] == InputArray[0] || Answer[2] == InputArray[1]) {
-                Ball += 1;
-            }
+        while (Flag) {
+            int Strike = StrikeCount(Answer, InputArray);
+            int Ball = BallCount(Answer, InputArray);
             RV.OutputStrikeBall(Strike, Ball);
             InputArray = ReInput();
+            Flag = AnswerCheck(Answer, InputArray);
         }
+        RV.OutputAnswer();
     }
 
+    public boolean AnswerCheck(int[] Answer, int[] InputArray) {
+        if (Arrays.equals(Answer, InputArray)) {
+            return false;
+        }
+        return true;
+    }
+
+    public int StrikeCount(int[] Answer, int[] InputArray) {
+        int Strike = 0;
+        if (Answer[0] == InputArray[0]) {
+            Strike += 1;
+        }
+        if (Answer[1] == InputArray[1]) {
+            Strike += 1;
+        }
+        if (Answer[2] == InputArray[2]) {
+            Strike += 1;
+        }
+        return Strike;
+    }
+
+    public int BallCount(int[] Answer, int[] InputArray) {
+        int Ball = 0;
+        if (Answer[0] == InputArray[1] || Answer[0] == InputArray[2]) {
+            Ball += 1;
+        }
+        if (Answer[1] == InputArray[0] || Answer[1] == InputArray[2]) {
+            Ball += 1;
+        }
+        if (Answer[2] == InputArray[0] || Answer[2] == InputArray[1]) {
+            Ball += 1;
+        }
+        return Ball;
+    }
 
     public int[] ReInput() {
+
         Scanner scanner = new Scanner(System.in);
         int InputNum = scanner.nextInt();
 
@@ -110,7 +127,7 @@ public class BullsAndCows {
 
             Answer = BAC.CreateRamdomNumber(Answer);
             Answer = BAC.CheckDuplication(Answer);
-
+            System.out.println("Answer:" + Answer[0] + "," + Answer[1] + "," + Answer[2]);
             Scanner scanner = new Scanner(System.in);
             int InputNum = scanner.nextInt();
 
