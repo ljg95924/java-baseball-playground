@@ -41,11 +41,11 @@ public class BullsAndCowsTest {
     @DisplayName("중복검사 TEST")
     @Test
     void CheckDuplicationTest() {
-        int[] D = new int[3];
-        D[0] = 1;
-        D[1] = 1;
-        D[2] = 1;
-        assertThat(BAC.CheckDuplication(DuplNums)).isNotEqualTo(D);
+        int[] DuplArray = new int[3];
+        DuplArray[0] = 1;
+        DuplArray[1] = 1;
+        DuplArray[2] = 1;
+        assertThat(BAC.CheckDuplication(DuplNums)).isNotEqualTo(DuplArray);
     }
 
     @DisplayName("중복숫자 리셋함수 TEST")
@@ -72,5 +72,28 @@ public class BullsAndCowsTest {
         Array[2] = D;
         assertThat(BAC.ChangeArray(A)).isEqualTo(Array);
     }
+
+    @DisplayName("Strike 카운트가 잘되는지 TEST")
+    @ParameterizedTest
+    @CsvSource(value = {"1,2,3,3", "5,2,7,1", "1,6,3,2", "4,5,6,0", "2,1,3,1"})
+    void StrikeCountTest(int A, int B ,int C,int D){
+        int[] TestNum = new int [3];
+        TestNum[0] =A;
+        TestNum[1] =B;
+        TestNum[2] =C;
+        assertThat(BAC.StrikeCount(ArrayNumber,TestNum)).isEqualTo(D);
+    }
+
+    @DisplayName("Ball 카운트가 잘되는지 TEST")
+    @ParameterizedTest
+    @CsvSource(value = {"5,2,3,0", "5,1,2,2", "3,1,2,3", "4,5,6,0", "2,1,3,2"})
+    void BallCount(int A, int B ,int C,int D){
+        int[] TestNum = new int [3];
+        TestNum[0] =A;
+        TestNum[1] =B;
+        TestNum[2] =C;
+        assertThat(BAC.BallCount(ArrayNumber,TestNum)).isEqualTo(D);
+    }
+
 
 }
