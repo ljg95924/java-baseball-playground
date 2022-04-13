@@ -1,25 +1,26 @@
 package rebuildBullsandcows;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class Ball {
-    List<Integer> answer = new ArrayList<>();
+    List<Integer> comNum = new ArrayList<>();
+    List<BallInfo> answer = new ArrayList<>();
 
-    public void generateComNum() {
+    public final void generateComNum() {
         for (int i = 1; i < 10; i++) {
-            answer.add(i);
+            comNum.add(i);
         }
-        Collections.shuffle(answer);
-        for (int i = 3; i < 9; i++) {
-            answer.remove(3);
+        Collections.shuffle(comNum);
+        comNum.subList(3, 9).clear();
+    }
+
+    public final void ballInfoSave() {
+        for (int i = 0; i < comNum.size(); i++) {
+            answer.add(BallInfo.of(i, comNum.get(i)));
         }
     }
 
-    public int countingAnswer(List inputList) {
 
-        return 0;
-    }
 }

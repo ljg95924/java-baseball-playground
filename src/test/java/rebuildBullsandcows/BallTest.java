@@ -1,5 +1,7 @@
 package rebuildBullsandcows;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -19,16 +21,23 @@ public class BallTest {
         assertThat(num).isEqualTo(true);
     }
 
+    Ball ball = new Ball();
+
     @DisplayName("랜덤숫자 생성테스트")
     @Test
     void 랜덤숫자생성테스트(){
-        Ball ball = new Ball();
         ball.generateComNum();
-        assertThat(ball.answer.size()).isEqualTo(3);
-        assertThat(ball.answer.get(0)).isGreaterThan(0).isLessThan(10);
-        assertThat(ball.answer.get(1)).isGreaterThan(0).isLessThan(10);
-        assertThat(ball.answer.get(2)).isGreaterThan(0).isLessThan(10);
+        assertThat(ball.comNum.size()).isEqualTo(3);
+        assertThat(ball.comNum.get(0)).isGreaterThan(0).isLessThan(10);
+        assertThat(ball.comNum.get(1)).isGreaterThan(0).isLessThan(10);
+        assertThat(ball.comNum.get(2)).isGreaterThan(0).isLessThan(10);
     }
+    @Test
+    void 랜덤숫자정보가BallInfo에잘들어가는지테스트(){
+        ball.generateComNum();
+        ball.ballInfoSave();
+        assertThat(ball.answer.size()).isEqualTo(3);
 
+    }
 
 }
