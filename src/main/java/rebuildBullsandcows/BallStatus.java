@@ -1,6 +1,6 @@
 package rebuildBullsandcows;
 
 public enum BallStatus {
-    STRIKE, BALL, NOTHING
+    STRIKE, BALL, NOTHING;
 
 }
