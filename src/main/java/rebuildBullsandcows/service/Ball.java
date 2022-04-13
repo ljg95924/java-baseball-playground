@@ -41,7 +41,7 @@ public class Ball {
             String[] ballNumber = input.split("");
 
             setUpVariable();
-            processInputDate(ballNumber);
+            processUserInputNum(ballNumber);
 
             compareAnswer();
             strikeBallPrint();
@@ -60,7 +60,7 @@ public class Ball {
         }
     }
 
-    private final void processInputDate(String[] ballNumber) {
+    public final void processUserInputNum(String[] ballNumber) {
         for (int i = 0; i < 3; i++) {
             inputNum.add(BallInfo.of(i, Integer.parseInt(ballNumber[i])));
         }
