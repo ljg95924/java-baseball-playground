@@ -1,4 +1,6 @@
-package rebuildBullsandcows;
+package rebuildBullsandcows.domain;
+
+import rebuildBullsandcows.BallStatus;
 
 import java.util.Objects;
 

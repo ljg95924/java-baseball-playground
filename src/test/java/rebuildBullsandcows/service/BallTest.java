@@ -1,13 +1,9 @@
-package rebuildBullsandcows;
+package rebuildBullsandcows.service;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import rebuildBullsandcows.Validation;
+import rebuildBullsandcows.service.Ball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -37,6 +33,10 @@ public class BallTest {
         ball.generateComNum();
         ball.ballInfoSave();
         assertThat(ball.answer.size()).isEqualTo(3);
+    }
+
+    @Test
+    void 스트라이크카운팅테스트(){
 
     }
 
